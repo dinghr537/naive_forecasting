@@ -1,6 +1,29 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+file1 = "f1"
+file2 = "f2"
+if __name__ == '__main__':
+    # You should not modify this part, but additional arguments are allowed.
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--training',
+                       default='training_data.csv',
+                       help='input training data file name')
+
+    parser.add_argument('--output',
+                        default='submission.csv',
+                        help='output file name')
+    args = parser.parse_args()
+    print(args)
+    print(type(args))
+    files = vars(args)
+    file1, file2 = files["training"].split()
+    print(file1)
+    print(file2)
+
+
 # In[1]:
 
 
@@ -11,7 +34,7 @@ import numpy as np
 # In[2]:
 
 
-data2020 = pd.read_csv('2020.csv')
+data2020 = pd.read_csv(file1)
 
 
 # In[3]:
@@ -30,7 +53,7 @@ rs2020 = rs2020.rename(columns={'備轉容量(MW)':'data'})
 # In[5]:
 
 
-data2021 = pd.read_csv('2021.csv')
+data2021 = pd.read_csv(file2)
 
 
 # In[6]:
@@ -113,7 +136,7 @@ def lstm_stock_model(shape):
 # In[12]:
 
 
-model = lstm_stock_model(X_train.shape)
+# model = lstm_stock_model(X_train.shape)
 
 
 # In[13]:
@@ -125,33 +148,33 @@ Y_train = Y_train.reshape([407,7])
 # In[62]:
 
 
-model = lstm_stock_model(X_train.shape)
-callback = EarlyStopping(monitor="mean_absolute_error", patience=10, verbose=1, mode="auto")
-history = model.fit(X_train, Y_train, epochs=1000, batch_size=5, validation_split=0.1, callbacks=[callback],shuffle=True)
+# model = lstm_stock_model(X_train.shape)
+# callback = EarlyStopping(monitor="mean_absolute_error", patience=10, verbose=1, mode="auto")
+# history = model.fit(X_train, Y_train, epochs=1000, batch_size=5, validation_split=0.1, callbacks=[callback],shuffle=True)
 
 
 # In[63]:
 
 
-model.save('my_model.h5')
+# model.save('my_model.h5')
 
 
 # In[64]:
 
 
-import matplotlib.pyplot as plt
-plt.plot(history.history['loss'])
-plt.plot(history.history['val_loss'])
-plt.show()
+# import matplotlib.pyplot as plt
+# plt.plot(history.history['loss'])
+# plt.plot(history.history['val_loss'])
+# plt.show()
 
 
 # In[68]:
 
 
-Predict1 = model.predict(np.array(train_norm[414:444]).reshape((1,30,1)))
-print(Predict1)
-trainPredict = scaler.inverse_transform(Predict1)
-print(trainPredict)
+# Predict1 = model.predict(np.array(train_norm[414:444]).reshape((1,30,1)))
+# print(Predict1)
+# trainPredict = scaler.inverse_transform(Predict1)
+# print(trainPredict)
 
 
 # In[15]:
@@ -178,7 +201,7 @@ print(real_result)
 # In[20]:
 
 
-real_result[0][1]
+# real_result[0][1]
 
 
 # In[21]:
