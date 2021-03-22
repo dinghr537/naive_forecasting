@@ -6,6 +6,14 @@ other packages can be installed by using pip $\rightarrow$ `pip install -r requi
 
 if TA wants to train the model (not just using the existing model I've trained before, please follow the line 153 of the app.py)
 
+執行方式：
+
+```shell
+python app.py --training "2020.csv 2021.csv" --output submission.csv
+```
+
+
+
 ## About data and the model
 
 本次使用的兩組data，分別來自 https://data.gov.tw/dataset/19995 和 https://data.gov.tw/dataset/25850 ，都是點選csv那裡，下載下來的。
