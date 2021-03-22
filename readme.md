@@ -8,7 +8,7 @@ if TA wants to train the model (not just using the existing model I've trained b
 
 ## About data and the model
 
-本次使用的兩組data，分別來自https://data.gov.tw/dataset/19995和https://data.gov.tw/dataset/25850，都是點選csv那裡，下載下來的。
+本次使用的兩組data，分別來自 https://data.gov.tw/dataset/19995 和 https://data.gov.tw/dataset/25850 ，都是點選csv那裡，下載下來的。
 
 本次實作，暫時僅使用了提供的data中的備轉容量進行訓練。中途有思考過要加入使用天氣data進行train，不過沒能找到合適的過去的data，只能找到之後的天氣預告訊息，於是放棄了加入天氣相關資訊。
 
